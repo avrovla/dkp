@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                dir("dkp"){
+                    sh 'mvn -B -DskipTests clean package' 
+                }
             }
         }
         stage('Test') {
@@ -17,10 +19,10 @@ pipeline {
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                    junit 'dkp/target/surefire-reports/*.xml'
                 }
             }
         }
-	
+    
     }
 }
