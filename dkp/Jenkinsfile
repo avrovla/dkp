@@ -19,7 +19,9 @@ pipeline {
             }
             post {
                 always {
-                    junit 'dkp/target/surefire-reports/*.xml'
+                    dir("dkp") {
+                        junit 'dkp/target/surefire-reports/*.xml'
+                    }
                 }
             }
         }
