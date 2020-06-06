@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.6.3-openjdk-14' 
-            args '-v /root/.m2:/root/.m2' 
+            args '-v $Home/.m2:/root/.m2' 
         }
     }
     stages {
@@ -17,5 +17,10 @@ pipeline {
             }
         }
     
+        stage('Deploy') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
     }
 }
