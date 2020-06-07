@@ -10,15 +10,19 @@
 	</parent>
 	<groupId>com.avrovla</groupId>
 	<artifactId>dkp</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.6</version>
 	<name>dkp</name>
 	<description>Demo project for Spring Boot</description>
 
 	<distributionManagement>
-		<snapshotRepository>
+		<!--<snapshotRepository>
 			<id>nexus-snapshots</id>
-			<url>http://nexus:8081/content/repositories/snapshots</url>
-		</snapshotRepository>
+			<url>http://localhost:8081/content/repositories/snapshots</url>
+		</snapshotRepository>-->
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://localhost:8081/content/repositories/roman-dev</url>
+		</repository>
 	</distributionManagement>
 
 	<properties>
@@ -96,7 +100,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<serverId>nexus</serverId>
+					<serverId>nexus-releases</serverId>
 					<nexusUrl>http://localhost:8081/</nexusUrl>
 					<skipStaging>true</skipStaging>
 				</configuration>
