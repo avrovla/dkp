@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Setup') {
                 steps {
-                    sh '.Chmod +x mvnw'
+                    sh 'chmod +x mvnw'
                 }
             }
 
