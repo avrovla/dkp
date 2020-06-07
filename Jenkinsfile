@@ -25,10 +25,9 @@ pipeline {
     
         stage('Deploy') {
             steps {
-                withCredentials([usernameColonPassword(credentialsId: 'nexus-roman', variable: 'USERPASS')]) {
-                    sh './mvnw -s settings.xml -DskipTests clean deploy'
+                withCredentials([file(credentialsId: 'nexus-settings', variable: 'FILE')]) {
+                      sh './mvnw -s $FILE -DskipTests clean deploy'
                 }
-
             }
         }
     }
