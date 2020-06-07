@@ -3,14 +3,17 @@ pipeline {
     agent {
         docker {
             image 'openjdk:14-alpine'
-            args '-v $HOME/.m2:/root/.m2'
-        }   
+        }
     }
     stages {
+        stage('Setup') {
+            steps {
+                sh 'chmod +x mvnw'
+            }
+        }
         stage('Build') { 
             steps {
-                    sh 'chmod +x mvnw'
-                    sh './mvnw -B -DskipTests clean package' 
+                sh './mvnw -B -DskipTests clean package'
             }
         }
         stage('Test') {
