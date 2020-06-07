@@ -21,7 +21,7 @@
 		</snapshotRepository>-->
 		<repository>
 			<id>nexus-releases</id>
-			<url>http://roman:123456789@localhost:8081/content/repositories/roman-dev</url>
+			<url>http://admin:admin123@localhost:8081/content/repositories/roman-dev</url>
 		</repository>
 	</distributionManagement>
 
