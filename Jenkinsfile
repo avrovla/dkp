@@ -21,7 +21,7 @@ pipeline {
     
         stage('Deploy') {
             steps {
-                sh './mvnw -DskipTests clean deploy'
+                sh './mvnw -s settings.xml -DskipTests clean deploy'
             }
         }
     }
