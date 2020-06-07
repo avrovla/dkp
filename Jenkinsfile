@@ -6,6 +6,12 @@ pipeline {
         }
     }
     stages {
+        stage('Setup') {
+                steps {
+                    sh '.Chmod +x mvnw'
+                }
+            }
+
         stage('Build') {
             steps {
                 sh './mvnw -B -DskipTests clean package'
