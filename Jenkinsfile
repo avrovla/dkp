@@ -6,10 +6,20 @@ pipeline {
         }
     }
     stages {
+
+        
         stage('Build') { 
-            steps {
-                    sh './mvnw clean package' 
+
+            git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
+
+            withMaven(maven: 'maven-3') {
+
+                sh "mvn -B -DskipTests clean package"
+
             }
+            // steps {
+            //        sh './mvnw -B -DskipTests clean package' 
+            //}
         }
         stage('Test') {
             steps {
