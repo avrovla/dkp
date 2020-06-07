@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.6.3-openjdk-14' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
+    agent any
     stages {
         stage('Build') { 
             steps {
@@ -14,13 +9,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh './mvnw test' 
             }
         }
     
         stage('Deploy') {
             steps {
-                sh 'mvn -DskipTests clean deploy'
+                sh './mvnw -DskipTests clean deploy'
             }
         }
     }
